@@ -44,7 +44,7 @@ const LeftSidebar = () => {
           const isActive =
             pathname === route || pathname.startsWith(`${route}/`);
           const finalRoute =
-            route === "/profile" ? `/profile/${currentUser.clerkId}` : route;
+            route === "/profile" ? `/profile/${currentUser?.clerkId}` : route;
 
           return (
             <Link
