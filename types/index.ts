@@ -46,7 +46,7 @@ export interface PodcastProps {
 }
 
 export interface ProfilePodcastProps {
-  podcasts: PodcastProps[];
+  podcasts: PodcastProps[] | any;
   listeners: number;
 }
 

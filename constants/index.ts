@@ -14,6 +14,11 @@ export const sidebarLinks = [
     route: "/create-podcast",
     label: "Create Podcast",
   },
+  {
+    imgURL: "/icons/avatar.svg",
+    route: "/profile",
+    label: "User Profile",
+  },
 ];
 
 export const voiceDetails = [

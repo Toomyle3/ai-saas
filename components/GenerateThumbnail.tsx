@@ -30,7 +30,6 @@ const GenerateThumbnail = ({
   const handleGenerateThumbnail = useAction(api.openai.generateThumbnailAction);
 
   const handleImage = async (blob: Blob, fileName: string) => {
-    setIsImageLoading(true);
     setImage("");
 
     try {
@@ -55,6 +54,7 @@ const GenerateThumbnail = ({
 
   const generateImage = async () => {
     try {
+      setIsImageLoading(true);
       const response = await handleGenerateThumbnail({ prompt: imagePrompt });
       const blob = new Blob([response], { type: "image/png" });
       handleImage(blob, `thumbnail-${uuidv4()}`);
