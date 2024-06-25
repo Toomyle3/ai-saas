@@ -22,7 +22,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "#/components/ui/select"
 import { cn } from "#/lib/utils"
 import { useState } from "react"
 import { Textarea } from "#/components/ui/textarea"
