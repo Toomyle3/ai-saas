@@ -16,10 +16,8 @@ const LeftSidebar = () => {
   const currentUser = user
     ? useQuery(api.users.getUserById, {
         clerkId: user.id,
-      })?.clerkId
+      })?
     : null;
-  console.log(currentUser, "currentUser");
-
   const pathname = usePathname();
   const router = useRouter();
   const { signOut } = useClerk();
@@ -46,7 +44,7 @@ const LeftSidebar = () => {
           const isActive =
             pathname === route || pathname.startsWith(`${route}/`);
           const finalRoute =
-            route === "/profile" ? `/profile/${currentUser}` : route;
+            route === "/profile" ? `/profile/${currentUser.clerkId}` : route;
 
           return (
             <Link
