@@ -13,8 +13,9 @@ import { useQuery } from "convex/react";
 
 const LeftSidebar = () => {
   const { user } = useUser();
+  const clerkId = user ? user?.id : ""
   const currentUser = useQuery(api.users.getUserById, {
-    clerkId: user ? user?.id : "",
+    clerkId: clerkId,
   });
   const pathname = usePathname();
   const router = useRouter();
