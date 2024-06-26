@@ -45,3 +45,27 @@ export const generateThumbnailAction = action({
     return buffer;
   },
 });
+
+export const generateScriptAction = action({
+  args: { prompt: v.string() },
+  handler: async (_, { prompt }) => {
+    try {
+      const response = await openai.chat.completions.create({
+        model: "gpt-4o",
+        messages: [{ role: "user", content: `Create a short story from this prompt (maximum: 300 words): ${prompt}` }],
+      });
+
+      const textContent = response.choices[0].message.content;
+      console.log(textContent, "textContent");
+
+      if (!textContent) {
+        throw new Error("Error generating response");
+      }
+
+      return textContent;
+    } catch (error) {
+      console.error(error);
+      throw new Error("Error generating response");
+    }
+  },
+});
