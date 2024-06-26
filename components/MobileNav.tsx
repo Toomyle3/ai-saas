@@ -49,9 +49,9 @@ const MobileNav = () => {
               Tommy AI
             </h1>
           </Link>
-          <div className="flex h-[calc(100vh-72px)] flex-col justify-between overflow-y-auto">
+          <div className="flex flex-col justify-between overflow-y-auto gap-[40px]">
             <SheetClose asChild>
-              <nav className="flex flex-col gap-6 text-white-1">
+              <nav className="flex flex-col max-h-[350px] gap-6 text-white-1">
                 {sidebarLinks.map(({ route, label, imgURL }) => {
                   const isActive =
                     pathname === route || pathname.startsWith(`${route}/`);
