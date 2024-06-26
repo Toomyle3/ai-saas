@@ -4,6 +4,8 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
+  SheetDescription,
+  SheetTitle,
   SheetTrigger,
 } from "#/components/ui/sheet";
 import { api } from "#/convex/_generated/api";
@@ -35,9 +37,10 @@ const MobileNavRight = () => {
             className="cursor-pointer"
           />
         </SheetTrigger>
+        <SheetTitle></SheetTitle>
         <SheetContent
           side="right"
-          className="border-none bg-black-1 w-[360px] pt-20"
+          className="border-none bg-black-1 w-[350px] pt-20"
         >
           <section
             className={cn("right_sidebar_mobile h-[calc(100vh-5px)]", {
@@ -101,6 +104,7 @@ const MobileNavRight = () => {
             </section>
           </section>
         </SheetContent>
+        <SheetDescription></SheetDescription>
       </Sheet>
     </section>
   );

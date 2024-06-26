@@ -4,16 +4,24 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
+  SheetDescription,
+  SheetTitle,
   SheetTrigger,
 } from "#/components/ui/sheet";
 import { sidebarLinks } from "#/constants";
 import { cn } from "#/lib/utils";
+import { SignedIn, useClerk, useUser } from "@clerk/clerk-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { Button } from "./ui/button";
+import "./index.css";
 
 const MobileNav = () => {
   const pathname = usePathname();
+  const { signOut } = useClerk();
+  const router = useRouter();
+  const { user } = useUser();
 
   return (
     <section>
@@ -27,7 +35,11 @@ const MobileNav = () => {
             className="cursor-pointer"
           />
         </SheetTrigger>
-        <SheetContent side="left" className="border-none bg-black-1">
+        <SheetTitle></SheetTitle>
+        <SheetContent
+          side="left"
+          className="border-none bg-black-1 max-w-[300px]"
+        >
           <Link
             href="/"
             className="flex cursor-pointer items-center gap-1 pb-10 pl-4"
@@ -43,11 +55,12 @@ const MobileNav = () => {
                 {sidebarLinks.map(({ route, label, imgURL }) => {
                   const isActive =
                     pathname === route || pathname.startsWith(`${route}/`);
-
+                  const finalRoute =
+                    route === "/profile" ? `/profile/${user?.id}` : route;
                   return (
-                    <SheetClose asChild key={route}>
+                    <SheetClose asChild key={finalRoute}>
                       <Link
-                        href={route}
+                        href={finalRoute}
                         className={cn(
                           "flex gap-3 items-center py-4 max-lg:px-4 justify-start",
                           {
@@ -68,8 +81,19 @@ const MobileNav = () => {
                 })}
               </nav>
             </SheetClose>
+            <SignedIn>
+              <div className="flex-center w-full pb-14 max-lg:px-4 lg:pr-8">
+                <Button
+                  className="text-16 w-full bg-orange-1 font-extrabold logout-btn"
+                  onClick={() => signOut(() => router.push("/sign-in"))}
+                >
+                  Log Out
+                </Button>
+              </div>
+            </SignedIn>
           </div>
         </SheetContent>
+        <SheetDescription></SheetDescription>
       </Sheet>
     </section>
   );
