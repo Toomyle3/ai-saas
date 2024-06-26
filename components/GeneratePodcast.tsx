@@ -74,9 +74,16 @@ const GeneratePodcast = (props: GeneratePodcastProps) => {
   const [generatingContent, isGeneratingContent] = useState(false);
   const [promptsContext, setPromptsContext] = useState("");
   const handleGenerateContent = useAction(api.openai.generateScriptAction);
+  const { toast } = useToast();
 
   const generateTextForPodcast = async () => {
     isGeneratingContent(true);
+    if (!props?.voicePrompt || props?.voicePrompt === "") {
+      toast({
+        title: "Please provide a voiceType to generate a podcast",
+      });
+      return isGeneratingContent(false);
+    }
     const response = await handleGenerateContent({ prompt: promptsContext });
     props.setVoicePrompt(response);
     isGeneratingContent(false);
