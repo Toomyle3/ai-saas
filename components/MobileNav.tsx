@@ -38,7 +38,7 @@ const MobileNav = () => {
         <SheetTitle></SheetTitle>
         <SheetContent
           side="left"
-          className="border-none bg-black-1 max-w-[300px] max-h-screen"
+          className="border-none bg-black-1 max-w-[300px] overflow-auto"
         >
           <Link
             href="/"
