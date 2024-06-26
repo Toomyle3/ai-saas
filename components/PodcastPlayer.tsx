@@ -16,6 +16,7 @@ const PodcastPlayer = () => {
   const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const { audio } = useAudio();
+  const [isOpened, setIsOpened] = useState(false);
 
   const togglePlayPause = () => {
     if (audioRef.current?.paused) {
@@ -71,6 +72,12 @@ const PodcastPlayer = () => {
   }, []);
 
   useEffect(() => {
+    if (audio?.audioUrl && audio?.audioUrl !== "") {
+      setIsOpened(true);
+    }
+  }, [audio]);
+
+  useEffect(() => {
     const audioElement = audioRef.current;
     if (audio?.audioUrl) {
       if (audioElement) {
@@ -96,7 +103,7 @@ const PodcastPlayer = () => {
   return (
     <div
       className={cn("sticky bottom-0 left-0 flex size-full flex-col", {
-        hidden: !audio?.audioUrl || audio?.audioUrl === "",
+        hidden: !isOpened,
       })}
     >
       <Progress
@@ -112,6 +119,18 @@ const PodcastPlayer = () => {
           onLoadedMetadata={handleLoadedMetadata}
           onEnded={handleAudioEnded}
         />
+        <svg
+          width={30}
+          className="cursor-pointer"
+          onClick={() => setIsOpened(false)}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
+          <path
+            fill="#ff8b3d"
+            d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z"
+          />
+        </svg>
         <div className="flex items-center gap-4 max-md:hidden">
           <Link href={`/podcast/${audio?.podcastId}`}>
             <Image
