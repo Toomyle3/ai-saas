@@ -90,10 +90,21 @@ const PodcastPlayer = () => {
       setIsPlaying(true);
     }
   }, [audio]);
+
   const handleLoadedMetadata = () => {
     if (audioRef.current) {
       setDuration(audioRef.current.duration);
     }
+  };
+
+  const handleClosePlayer = () => {
+    setIsOpened(false);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+    setIsPlaying(false);
+    setDuration(0);
   };
 
   const handleAudioEnded = () => {
@@ -122,7 +133,7 @@ const PodcastPlayer = () => {
         <svg
           width={30}
           className="cursor-pointer"
-          onClick={() => setIsOpened(false)}
+          onClick={handleClosePlayer}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
         >
