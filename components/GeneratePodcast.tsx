@@ -1,15 +1,14 @@
-import { GeneratePodcastProps } from "#/types";
-import React, { useState } from "react";
-import { Label } from "./ui/label";
-import { Textarea } from "./ui/textarea";
-import { Button } from "./ui/button";
-import { Loader } from "lucide-react";
-import { useAction, useMutation } from "convex/react";
-import { api } from "#/convex/_generated/api";
-import { v4 as uuidv4 } from "uuid";
 import { useToast } from "#/components/ui/use-toast";
-import { useUploadFiles } from "@xixixao/uploadstuff/react";
+import { api } from "#/convex/_generated/api";
 import { cn } from "#/lib/utils";
+import { GeneratePodcastProps } from "#/types";
+import { useUploadFiles } from "@xixixao/uploadstuff/react";
+import { useAction, useMutation } from "convex/react";
+import { Loader } from "lucide-react";
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { Button } from "./ui/button";
+import { Textarea } from "./ui/textarea";
 
 const useGeneratePodcast = ({
   setAudio,
@@ -26,13 +25,6 @@ const useGeneratePodcast = ({
   const generatePodcast = async () => {
     setIsGenerating(true);
     setAudio("");
-
-    if (!voicePrompt) {
-      toast({
-        title: "Please provide a voiceType to generate a podcast",
-      });
-      return setIsGenerating(false);
-    }
 
     try {
       const response = await getPodcastAudio({
@@ -74,16 +66,9 @@ const GeneratePodcast = (props: GeneratePodcastProps) => {
   const [generatingContent, isGeneratingContent] = useState(false);
   const [promptsContext, setPromptsContext] = useState("");
   const handleGenerateContent = useAction(api.openai.generateScriptAction);
-  const { toast } = useToast();
 
   const generateTextForPodcast = async () => {
     isGeneratingContent(true);
-    if (!props?.voicePrompt || props?.voicePrompt === "") {
-      toast({
-        title: "Please provide a voiceType to generate a podcast",
-      });
-      return isGeneratingContent(false);
-    }
     const response = await handleGenerateContent({ prompt: promptsContext });
     props.setVoicePrompt(response);
     isGeneratingContent(false);
