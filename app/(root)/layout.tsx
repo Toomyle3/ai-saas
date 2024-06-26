@@ -18,7 +18,7 @@ export default function RootLayout({
 
         <section className="flex min-h-screen flex-1 flex-col px-4 sm:px-14">
           <div className="mx-auto flex w-full max-w-5xl flex-col max-sm:px-4">
-            <div className="fixed bg-black-1 w-[85%] z-10 h-[60px] flex items-center justify-between md:justify-end">
+            <div className="fixed bg-black-3 w-screen pr-14 z-10 flex h-16 items-center justify-between md:justify-end">
               <div className="md:hidden">
                 <MobileNav />
               </div>
@@ -32,7 +32,7 @@ export default function RootLayout({
               </Link>
               <MobileNavRight />
             </div>
-            <div className="flex flex-col mt-10 md:pb-14">
+            <div className="flex flex-col mt-8 md:pb-14">
               <Toaster />
               {children}
             </div>
