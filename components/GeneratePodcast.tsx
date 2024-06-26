@@ -111,14 +111,14 @@ const GeneratePodcast = (props: GeneratePodcastProps) => {
               "bg-black-6": !isAiThumbnail,
             })}
           >
-            Add Prompt to generate Podcast
+            Add Prompts for Podcast
           </Button>
         </div>
         {isAiThumbnail && (
-          <div className="flex gap-10">
+          <div className="flex flex-col sm:flex-row sm:gap-10 pb-5">
             <Textarea
               className="input-class font-light focus-visible:ring-offset-orange-1"
-              placeholder="Provide prompt text to AI"
+              placeholder="Provide Prompts to AI"
               rows={3}
               value={promptsContext}
               onChange={(e: any) => setPromptsContext(e.target.value)}
