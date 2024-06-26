@@ -40,10 +40,10 @@ const MobileNavRight = () => {
         <SheetTitle></SheetTitle>
         <SheetContent
           side="right"
-          className="border-none bg-black-1 w-[350px] pt-20"
+          className="border-none bg-black-1 w-[350px] pb-[200px] pt-20 overflow-auto"
         >
           <section
-            className={cn("right_sidebar_mobile h-[calc(100vh-5px)]", {
+            className={cn("h-[calc(100vh-5px)]", {
               "h-[calc(100vh-140px)]": audio?.audioUrl,
             })}
           >
