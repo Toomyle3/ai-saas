@@ -44,9 +44,6 @@ const useGeneratePodcast = ({
       const audioUrl = await getAudioUrl({ storageId });
       setAudio(audioUrl!);
       setIsGenerating(false);
-      toast({
-        title: "Podcast generated successfully",
-      });
     } catch (error) {
       console.log("Error generating podcast", error);
       setIsGenerating(false);

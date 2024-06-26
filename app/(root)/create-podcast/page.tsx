@@ -76,9 +76,6 @@ const CreatePodcast = () => {
     try {
       setIsSubmitting(true);
       if (!audioUrl || !imageUrl || !voiceType) {
-        toast({
-          title: "Please generate audio and image",
-        });
         setIsSubmitting(false);
         throw new Error("Please generate audio and image");
       }
@@ -96,7 +93,6 @@ const CreatePodcast = () => {
         audioStorageId: audioStorageId!,
         imageStorageId: imageStorageId!,
       });
-      toast({ title: "Podcast created" });
       setIsSubmitting(false);
       router.push("/");
     } catch (error) {

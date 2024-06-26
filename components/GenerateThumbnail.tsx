@@ -43,9 +43,6 @@ const GenerateThumbnail = ({
       const imageUrl = await getImageUrl({ storageId });
       setImage(imageUrl!);
       setIsImageLoading(false);
-      toast({
-        title: "Thumbnail generated successfully",
-      });
     } catch (error) {
       console.log(error);
     }
@@ -59,7 +56,6 @@ const GenerateThumbnail = ({
       handleImage(blob, `thumbnail-${uuidv4()}`);
     } catch (error) {
       console.log(error);
-      toast({ title: "Error generating thumbnail", variant: "destructive" });
     }
   };
   const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
