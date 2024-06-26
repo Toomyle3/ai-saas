@@ -45,9 +45,9 @@ const MobileNav = () => {
             className="flex cursor-pointer items-center gap-1 pb-10 pl-4"
           >
             <Image src="/icons/logo.svg" alt="logo" width={23} height={27} />
-            <h1 className="text-24 font-extrabold  text-white-1 ml-2">
+            <h3 className="text-20 font-extrabold text-white-1 ml-2">
               Tommy AI
-            </h1>
+            </h3>
           </Link>
           <div className="flex flex-col justify-between overflow-y-auto gap-[40px]">
             <SheetClose asChild>

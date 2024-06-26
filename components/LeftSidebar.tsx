@@ -26,12 +26,12 @@ const LeftSidebar = () => {
       <div className="flex w-full flex-col gap-10">
         <Link
           href="/"
-          className="flex cursor-pointer items-center max-lg:justify-center"
+          className="flex cursor-pointer items-center max-lg:justify-center gap-5"
         >
           <Image src="/icons/logo.svg" alt="logo" width={23} height={27} />
-          <h1 className="text-24 font-extrabold text-white max-lg:hidden">
+          <h3 className="text-20 font-extrabold text-white">
             Tommy AI
-          </h1>
+          </h3>
         </Link>
         <nav className="flex flex-col gap-6 items-start">
           {sidebarLinks.map(({ route, label, imgURL }) => {
