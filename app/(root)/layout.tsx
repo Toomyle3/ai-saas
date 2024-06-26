@@ -16,9 +16,9 @@ export default function RootLayout({
       <main className="relative flex bg-black-3 pb-20">
         <LeftSidebar />
 
-        <section className="flex min-h-screen flex-1 flex-col px-4 sm:px-14">
+        <section className="flex min-h-screen flex-1 flex-col px-4 md:px-14">
           <div className="mx-auto flex w-full max-w-5xl flex-col max-sm:px-4">
-            <div className="fixed bg-black-3 w-screen pr-14 z-10 flex h-16 items-center justify-between md:justify-end">
+            <div className="fixed bg-black-3 w-full z-10 pr-14 sm:pr-10 flex h-16 items-center justify-between md:justify-end">
               <div className="md:hidden">
                 <MobileNav />
               </div>
