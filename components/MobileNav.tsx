@@ -51,7 +51,7 @@ const MobileNav = () => {
           </Link>
           <div className="flex h-[calc(100vh-72px)] flex-col justify-between overflow-y-auto">
             <SheetClose asChild>
-              <nav className="flex h-full flex-col gap-6 text-white-1">
+              <nav className="flex flex-col gap-6 text-white-1">
                 {sidebarLinks.map(({ route, label, imgURL }) => {
                   const isActive =
                     pathname === route || pathname.startsWith(`${route}/`);
